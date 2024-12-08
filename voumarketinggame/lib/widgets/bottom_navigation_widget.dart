@@ -67,7 +67,7 @@ class BottomNavBar extends StatelessWidget {
         children: [
           Container(
             height: 4,
-            width: 60,
+            width: 80,
             decoration: BoxDecoration(
               color: isSelected ? lightColorScheme.primary : Colors.transparent,
               borderRadius: BorderRadius.circular(2),

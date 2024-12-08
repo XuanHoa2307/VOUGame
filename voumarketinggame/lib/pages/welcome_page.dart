@@ -16,7 +16,7 @@ class WelcomeScreen extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-
+            const SizedBox(height: 20),
             Image.asset(
               'assets/images/logo.png',
               height: 200,
@@ -24,7 +24,7 @@ class WelcomeScreen extends StatelessWidget {
             ),
 
             Flexible(
-                flex: 1,
+                flex: 2,
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     vertical: 0,
