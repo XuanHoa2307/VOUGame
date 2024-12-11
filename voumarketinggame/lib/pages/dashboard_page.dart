@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:voumarketinggame/pages/event_detail_page.dart';
-import 'package:voumarketinggame/theme/theme.dart';
 import 'package:voumarketinggame/widgets/bottom_navigation_widget.dart';
 import 'package:voumarketinggame/widgets/event_section_widget.dart';
 
@@ -19,49 +18,194 @@ class _DashboardPageState extends State<DashboardScreen> {
   String typeEvent4 = 'Sự kiện đã kết thúc';
 
   final List<Map<String, String>> ongoingEvents = [
-    {'title': 'Event 1', 'image': 'assets/images/bg1.png'},
-    {'title': 'Event 2', 'image': 'assets/images/bg3.png'},
-    {'title': 'Event 3', 'image': 'assets/images/bg2.png'},
-    {'title': 'Event 4', 'image': 'assets/images/bg3.png'},
-    {'title': 'Event 5', 'image': 'assets/images/bg4.png'},
-    {'title': 'Event 6', 'image': 'assets/images/bg5.png'},
-  ];
+  {
+    'title': 'Giảm 50% cho mọi đơn',
+    'image': 'assets/images/bg1.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'Highlands Coffee',
+    'detail': 'Ưu đãi giảm 50% cho mọi đơn hàng khi sử dụng ứng dụng.'
+  },
+  {
+    'title': 'Ưu đãi đặc biệt cuối tuần',
+    'image': 'assets/images/bg3.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'TocoToco',
+    'detail': 'Giảm giá đặc biệt vào cuối tuần khi mua từ 2 sản phẩm trở lên.'
+  },
+  {
+    'title': 'Tặng 1 nước khi mua 2 ly',
+    'image': 'assets/images/bg2.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'Fashion',
+    'detail': 'Mua 2 ly bất kỳ tặng thêm 1 ly miễn phí chỉ trong tuần này.'
+  },
+  {
+    'title': 'Ưu đãi giờ vàng',
+    'image': 'assets/images/bg3.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'KATINAT',
+    'detail': 'Giảm 30% cho tất cả đơn hàng trong khung giờ vàng 16:00 - 18:00.'
+  },
+  {
+    'title': 'Khuyến mãi 1 tặng 1',
+    'image': 'assets/images/bg4.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'WARRIOR',
+    'detail': 'Mua 1 tặng 1 khi sử dụng voucher tại cửa hàng WARRIOR.'
+  },
+  {
+    'title': 'Đồng giá 20K',
+    'image': 'assets/images/bg5.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'Trà Sữa Đô Đô',
+    'detail': 'Mọi sản phẩm đồng giá 20K khi thanh toán bằng ví điện tử.'
+  },
+];
 
-  final List<Map<String, String>> upcomingEvents = [
-    {'title': 'Event Coming 1', 'image': 'assets/images/bg4.png'},
-    {'title': 'Event coming 2', 'image': 'assets/images/bg1.png'},
-    {'title': 'Event coming 3', 'image': 'assets/images/bg2.png'},
-    {'title': 'Event Coming 4', 'image': 'assets/images/bg5.png'},
-    {'title': 'Event coming 5', 'image': 'assets/images/bg4.png'},
-    {'title': 'Event coming 6', 'image': 'assets/images/bg3.png'},
-  ];
+final List<Map<String, String>> upcomingEvents = [
+  {
+    'title': 'Giảm 10% trên mọi hóa đơn',
+    'image': 'assets/images/bg4.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'Highlands Coffee',
+    'detail': 'Ưu đãi giảm giá 10% cho mọi hóa đơn trên toàn quốc.'
+  },
+  {
+    'title': 'Quà tặng sinh nhật',
+    'image': 'assets/images/bg1.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'TocoToco',
+    'detail': 'Nhận quà tặng miễn phí nhân dịp sinh nhật của bạn.'
+  },
+  {
+    'title': 'Miễn phí giao hàng',
+    'image': 'assets/images/bg2.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'Fashion',
+    'detail': 'Miễn phí giao hàng cho các đơn hàng từ 150K trở lên.'
+  },
+  {
+    'title': 'Giảm giá cuối tháng',
+    'image': 'assets/images/bg5.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'KATINAT',
+    'detail': 'Giảm giá 25% cho tất cả sản phẩm trong dịp cuối tháng.'
+  },
+  {
+    'title': 'Ưu đãi khách hàng mới',
+    'image': 'assets/images/bg4.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'WARRIOR',
+    'detail': 'Ưu đãi đặc biệt dành cho khách hàng lần đầu mua sắm.'
+  },
+  {
+    'title': 'Tặng thêm topping miễn phí',
+    'image': 'assets/images/bg3.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'Trà Sữa Đô Đô',
+    'detail': 'Thêm topping miễn phí cho tất cả đơn hàng từ 50K.'
+  },
+];
 
-  final List<Map<String, String>> outstandingEvent = [
-    {'title': 'Event ABC', 'image': 'assets/images/bg1.png'},
-    {'title': 'Event DEF', 'image': 'assets/images/bg4.png'},
-    {'title': 'Event 123', 'image': 'assets/images/bg2.png'},
-    {'title': 'Event 456', 'image': 'assets/images/bg5.png'},
-    {'title': 'Event XYZ', 'image': 'assets/images/bg3.png'},
-    {'title': 'Event JQK', 'image': 'assets/images/bg4.png'},
-  ];
+final List<Map<String, String>> outstandingEvent = [
+  {
+    'title': 'Ngày hội giảm giá',
+    'image': 'assets/images/bg1.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'Highlands Coffee',
+    'detail': 'Ngày hội giảm giá cực lớn, lên đến 70% trên toàn quốc.'
+  },
+  {
+    'title': 'Tặng voucher 50K',
+    'image': 'assets/images/bg4.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'TocoToco',
+    'detail': 'Nhận ngay voucher 50K khi mua hàng trực tuyến.'
+  },
+  {
+    'title': 'Ưu đãi hội viên VIP',
+    'image': 'assets/images/bg2.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'Fashion',
+    'detail': 'Dành riêng cho khách hàng VIP với ưu đãi hấp dẫn.'
+  },
+  {
+    'title': 'Khuyến mãi lễ hội mùa xuân',
+    'image': 'assets/images/bg5.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'KATINAT',
+    'detail': 'Giảm 40% cho toàn bộ sản phẩm dịp lễ hội mùa xuân.'
+  },
+  {
+    'title': 'Tích điểm đổi quà',
+    'image': 'assets/images/bg3.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'WARRIOR',
+    'detail': 'Tích điểm ngay hôm nay để nhận quà tặng hấp dẫn.'
+  },
+  {
+    'title': 'Ưu đãi độc quyền',
+    'image': 'assets/images/bg4.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'Trà Sữa Đô Đô',
+    'detail': 'Ưu đãi độc quyền chỉ có tại cửa hàng Đô Đô.'
+  },
+];
 
-  final List<Map<String, String>> endEvent = [
-    {'title': 'Event No.1', 'image': 'assets/images/bg4.png'},
-    {'title': 'Event No.2', 'image': 'assets/images/bg3.png'},
-    {'title': 'Event No.3', 'image': 'assets/images/bg5.png'},
-    {'title': 'Event No.4', 'image': 'assets/images/bg2.png'},
-    {'title': 'Event No.5', 'image': 'assets/images/bg3.png'},
-    {'title': 'Event No.6', 'image': 'assets/images/bg1.png'},
-  ];
+final List<Map<String, String>> endEvent = [
+  {
+    'title': 'Giảm giá cuối tuần',
+    'image': 'assets/images/bg4.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'Highlands Coffee',
+    'detail': 'Sự kiện giảm giá cực hot, kết thúc cuối tuần vừa qua.'
+  },
+  {
+    'title': 'Ưu đãi Black Friday',
+    'image': 'assets/images/bg3.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'TocoToco',
+    'detail': 'Khuyến mãi Black Friday đã kết thúc, hẹn gặp lại năm sau.'
+  },
+  {
+    'title': 'Ưu đãi đồng giá',
+    'image': 'assets/images/bg5.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'Fashion',
+    'detail': 'Sự kiện đồng giá 50K đã kết thúc vào hôm qua.'
+  },
+  {
+    'title': 'Giảm giá tháng 12',
+    'image': 'assets/images/bg2.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'KATINAT',
+    'detail': 'Ưu đãi giảm giá toàn bộ sản phẩm dịp tháng 12 đã kết thúc.'
+  },
+  {
+    'title': 'Quà tặng khách hàng thân thiết',
+    'image': 'assets/images/bg3.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'WARRIOR',
+    'detail': 'Chương trình quà tặng khách hàng thân thiết đã kết thúc.'
+  },
+  {
+    'title': 'Ưu đãi mùa lễ hội',
+    'image': 'assets/images/bg1.png',
+    'avatar': 'assets/images/bg1.png',
+    'store': 'Trà Sữa Đô Đô',
+    'detail': 'Ưu đãi mùa lễ hội kết thúc vào tuần trước.'
+  },
+];
+
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
         
-        backgroundColor: lightColorScheme.primary,
+        backgroundColor: Colors.pink,
         elevation: 0,
         shape: const Border(
           bottom: BorderSide(
@@ -76,7 +220,7 @@ class _DashboardPageState extends State<DashboardScreen> {
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.blue.withOpacity(0.5),
+                  color: Colors.pink.withOpacity(0.5),
                   blurRadius: 5,
                   spreadRadius: 2, 
                   offset: const Offset(0, 3), 
@@ -106,12 +250,13 @@ class _DashboardPageState extends State<DashboardScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 30,),
+              const SizedBox(height: 20,),
               EventSection(
-                title: typeEvent1,
+                
+                time: typeEvent1,
                 items: ongoingEvents,
                 onViewAll: () {
-                  // Xử lý khi nhấn "Xem tất cả"
+               
                 },
                 onItemTap: (event) {
                   Navigator.push(
@@ -122,12 +267,12 @@ class _DashboardPageState extends State<DashboardScreen> {
                   );
                 },
               ),
-          
+              
               EventSection(
-                title: typeEvent2,
+                time: typeEvent2,
                 items: upcomingEvents,
                 onViewAll: () {
-                  // Xử lý khi nhấn "Xem tất cả"
+                  
                 },
                 onItemTap: (event) {
                   Navigator.push(
@@ -139,10 +284,10 @@ class _DashboardPageState extends State<DashboardScreen> {
                 },
               ),
               EventSection(
-                title: typeEvent3,
+                time: typeEvent3,
                 items: outstandingEvent,
                 onViewAll: () {
-                  // Xử lý khi nhấn "Xem tất cả"
+                  
                 },
                 onItemTap: (event) {
                   Navigator.push(
@@ -154,10 +299,10 @@ class _DashboardPageState extends State<DashboardScreen> {
                 },
               ),
               EventSection(
-                title: typeEvent4,
+                time: typeEvent4,
                 items: endEvent,
                 onViewAll: () {
-                  // Xử lý khi nhấn "Xem tất cả"
+                 
                 },
                 onItemTap: (event) {
                   Navigator.push(

@@ -1,15 +1,17 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:voumarketinggame/widgets/listview_widget.dart';
 
 class EventSection extends StatelessWidget {
-  final String title;
+  final String time;
   final List<Map<String, String>> items;
   final VoidCallback onViewAll;
   final Function(Map<String, String>) onItemTap; 
 
   const EventSection({
     super.key,
-    required this.title,
+    required this.time,
     required this.items,
     required this.onViewAll,
     required this.onItemTap, 
@@ -26,7 +28,7 @@ class EventSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                title,
+                time,
                 style: const TextStyle(
                   fontSize: 18,
                   
@@ -44,6 +46,8 @@ class EventSection extends StatelessWidget {
           ),
         ),
         HorizontalList(
+
+          time: time,
           items: items,
           onItemTap: onItemTap,
         ),

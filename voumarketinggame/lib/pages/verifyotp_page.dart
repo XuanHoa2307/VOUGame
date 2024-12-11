@@ -17,7 +17,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
   @override
   void dispose() {
-    // Dispose controllers and focus nodes
+   
     for (var controller in _controllers) {
       controller.dispose();
     }
@@ -31,7 +31,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
 void _checkOtpComplete() {
   setState(() {
-    // Kiểm tra xem tất cả các ô OTP đã được điền hay chưa
+    
     _isOtpComplete = _controllers.every((controller) => controller.text.isNotEmpty);
   });
 }
@@ -86,7 +86,7 @@ void _checkOtpComplete() {
                         keyboardType: TextInputType.number,
                         maxLength: 1,
                         decoration: InputDecoration(
-                          counterText: "", // Remove character counter
+                          counterText: "",
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: const BorderSide(color: Colors.black),
@@ -173,12 +173,12 @@ void _checkOtpComplete() {
                                 (route) => false,
                               );
                             }
-                          : null, // Nút bị vô hiệu hóa khi chưa nhập đủ OTP
+                          : null, 
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.zero,
                         backgroundColor: _isOtpComplete
-                            ? lightColorScheme.primary // Màu nền khi nút hoạt động
-                            : Colors.white, // Màu xám khi nút bị vô hiệu hóa
+                            ? lightColorScheme.primary 
+                            : Colors.white, 
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -188,8 +188,8 @@ void _checkOtpComplete() {
                         style: TextStyle(
                           fontSize: 18,
                           color: _isOtpComplete
-                              ? Colors.white // Màu chữ khi nút hoạt động
-                              : Colors.white24, // Màu chữ khi nút bị vô hiệu hóa
+                              ? Colors.white 
+                              : Colors.white24, 
                         ),
                       ),
                     ),

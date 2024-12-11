@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voumarketinggame/theme/theme.dart';
+
 
 class EventDetailScreen extends StatelessWidget {
   final Map<String, String> event;
@@ -13,133 +13,326 @@ class EventDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(eventType),
-        backgroundColor: lightColorScheme.primary,
-        elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.black),
-        titleTextStyle: const TextStyle(
-          color: Colors.black,
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.grey.shade100,
+        body: Column(
           children: [
+          
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.arrow_back, color: Colors.black),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    eventType,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black12.withOpacity(0.5),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
-                      event['image']!,
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      height: MediaQuery.of(context).size.width * 0.5,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
 
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      const SizedBox(height: 85),
+                  Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.4),
+                          blurRadius: 3, 
+                          offset: const Offset(0, 3), 
+                        ),
+                      ],
+                    ),
+                    child: ClipRRect(
+                      child: Image.asset(
+                        event['image']!,
+                        height: MediaQuery.of(context).size.height * 0.25,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
 
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 0.0, horizontal: 16.0),
+                    padding: const EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.grey.shade300, 
+                        width: 1.5, 
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(Icons.timelapse, color: Colors.black),
+                            const SizedBox(width: 8),
+                            Text(
+                            eventType,
+                            style: const TextStyle(
+                              color: Colors.black87,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+      
+                    // Title and Store Info
+                    const SizedBox(height: 7), 
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 16.0),
+                      padding: const EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                        color: Colors.grey.shade300, 
+                        width: 1.0, 
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          Text(
+                            event['title'] ?? '',
+                            style: const TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            event['detail'] ?? '',
+                            style: const TextStyle(
+                              fontSize: 13,
+                              color: Colors.black,
+                            ),
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 16),
+                          const Divider(
+                            thickness: 1,
+                            color: Colors.grey,
+                          ),
+                          const SizedBox(height: 16),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                backgroundImage: AssetImage(
+                                    event['avatar'] ?? 'assets/bg2.png'),
+                                radius: 17,
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                event['store'] ?? '',
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+      
+                    // Terms and Conditions
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 16.0),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16.0, horizontal: 16.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                        color: Colors.grey.shade300, 
+                        width: 1.0, 
+                      ),
+                      ),
+                      child: Column(
                       
-                      ElevatedButton.icon(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 14.0),
-                          backgroundColor: const Color.fromARGB(243, 233, 30, 98),
-                          shadowColor: Colors.pink.withOpacity(0.8), 
-                          elevation: 8, 
-                          side: const BorderSide(
-                            color: Colors.black26, 
-                            width: 2,
-                          ), 
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Nội dung thể lệ:',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        icon: const Icon(Icons.favorite, color: Colors.white),
-                        label: const Text(
-                          'Save Favorites',
-                          style: TextStyle(fontSize: 14),
-                        ),
+                          const SizedBox(height: 8),
+                          const Text(
+                            '• Áp dụng cho khách hàng mới và cũ.',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          const Text(
+                            '• Đạt số điểm tối thiểu 80/120.',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          const Text(
+                            '• Số lượt chơi tối đa 3 lần.',
+                            style: TextStyle(fontSize: 16),
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const Text(
+                            '• Thời gian diễn ra đến hết ngày 17/01/2025.',
+                            style: TextStyle(fontSize: 16),
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 5),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [ 
+                              TextButton(
+                              onPressed: () {
+                                
+                              },
+                              child: const Text(
+                                'Xem thêm',
+                                style: TextStyle(color: Colors.pink),
+                              ),
+                            ),
+                            ]
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 15),
-
-                     
-                      ElevatedButton.icon(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12.0),
-                          backgroundColor: const Color.fromARGB(189, 255, 193, 7),
-                          shadowColor: lightColorScheme.primary.withOpacity(0.8), 
-                          elevation: 8, 
-                          side: const BorderSide(
-                            color: Colors.black26,
-                            width: 2,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        icon: const Icon(Icons.lightbulb, color: Colors.white),
-                        label: const Text(
-                          'How to play',
-                          style: TextStyle(fontSize: 15),
-                        ),
+                    ),
+      
+                    // Guide Section
+                    Container(
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 16.0),
+                    padding: const EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.grey.shade300, 
+                        width: 1.5, 
                       ),
-                    ],
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.help_outline, color: Colors.grey),
+                            SizedBox(width: 8),
+                            Text(
+                              'Hướng dẫn chơi game',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        Icon(Icons.arrow_forward_ios,
+                            color: Colors.grey, size: 16),
+                      ],
+                    ),
                   ),
+
+                  //
+
+
+
+                  ],
                 ),
-              ],
-            ),
-            const SizedBox(height: 16),
-
-       
-            Text(
-              'Title: ${event['title']}',
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 20),
-
-            
-            const Text(
-              'Nội dung:',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              event['detail'] ?? 'Không có nội dung chi tiết.',
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.black87,
               ),
             ),
           ],
+        ),
+        bottomNavigationBar: Container(
+          color: Colors.white,
+          padding: const EdgeInsets.all(16.0),
+          child: 
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              ElevatedButton.icon(
+              onPressed: () {
+               
+              },
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 12.0),
+                backgroundColor: Colors.white, 
+                shadowColor: Colors.blue.withOpacity(0.5), 
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10), 
+                ),
+                side: const BorderSide(
+                color: Colors.black38, 
+                width: 1, 
+                ),
+              ),
+              icon: const Icon(
+                Icons.favorite_border, 
+                color: Colors.black, 
+                size: 20, 
+              ),
+              label: const Text(
+                'Save',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+
+            
+            const SizedBox(width: 8),
+
+            Expanded(
+              child: ElevatedButton(
+                onPressed: () {
+                  
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.all(15.0),
+                  backgroundColor: Colors.pink,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: const Text(
+                  'Tham gia ngay',
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                ),
+              ),
+            ),
+            ]
+          ),
         ),
       ),
     );

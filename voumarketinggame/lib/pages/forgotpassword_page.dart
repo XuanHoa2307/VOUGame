@@ -36,7 +36,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   // Back Icon
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(context); // Quay lại màn hình trước đó
+                      Navigator.pop(context);
                     },
                     child: const Icon(
                       Icons.arrow_back,
@@ -136,7 +136,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                               content: Text('Request sent to reset password'),
                             ),
                           );
-                          // Add logic to handle password reset request
                         }
                       },
                       style: ElevatedButton.styleFrom(

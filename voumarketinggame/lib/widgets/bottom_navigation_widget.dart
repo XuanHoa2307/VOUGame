@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:voumarketinggame/theme/theme.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -69,7 +68,7 @@ class BottomNavBar extends StatelessWidget {
             height: 4,
             width: 80,
             decoration: BoxDecoration(
-              color: isSelected ? lightColorScheme.primary : Colors.transparent,
+              color: isSelected ? Colors.pinkAccent : Colors.transparent,
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -77,7 +76,7 @@ class BottomNavBar extends StatelessWidget {
           Icon(
             icon,
             size: 28,
-            color: isSelected ? lightColorScheme.primary : Colors.grey.shade700, 
+            color: isSelected ? Colors.pinkAccent : Colors.grey.shade700, 
           ),
           const SizedBox(height: 4),
           Text(
@@ -85,7 +84,7 @@ class BottomNavBar extends StatelessWidget {
             style: TextStyle(
               fontSize: 12,
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-              color: isSelected ? lightColorScheme.primary : Colors.grey.shade700,
+              color: isSelected ? Colors.pinkAccent : Colors.grey.shade700,
             ),
           ),
         ],

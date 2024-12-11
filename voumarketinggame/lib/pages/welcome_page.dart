@@ -56,7 +56,7 @@ class WelcomeScreen extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 21,
                                 color: Colors.black,
-                                // height: 0,
+                               
                               ))
                         ],
                       ),
@@ -72,7 +72,7 @@ class WelcomeScreen extends StatelessWidget {
                         Expanded(
                           child: WelcomeButton(
                             buttonText: 'Sign in',
-                            onTap: SignInScreen(),
+                            onTap: const SignInScreen(),
                             color: Colors.transparent,
                             textColor: lightColorScheme.onPrimary,
                           ),
