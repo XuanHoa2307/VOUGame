@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:voumarketinggame/pages/event_viewall_page.dart';
+import 'package:voumarketinggame/providers/event_provider.dart';
+import 'package:voumarketinggame/widgets/event_section_widget.dart';
+import 'package:voumarketinggame/widgets/guide_widget.dart';
 
 class EventDetailScreen extends StatelessWidget {
   final Map<String, String> event;
@@ -13,7 +18,7 @@ class EventDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    //final eventProvider = Provider.of<EventProvider>(context);
+    final eventProvider = Provider.of<EventProvider>(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey.shade100,
@@ -229,8 +234,8 @@ class EventDetailScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                            Text(
-                            event['voucherUsed'] ?? '',
+                          Text(
+                            '${int.parse(event['voucherCount'] ?? '0') - int.parse(event['voucherUsed'] ?? '0')}', 
                             style: const TextStyle(
                               color: Colors.black87,
                               fontSize: 14,
@@ -245,7 +250,7 @@ class EventDetailScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            event['voucherCount'] ?? '',
+                            event['voucherCount'] ?? '0',
                             style: const TextStyle(
                               color: Colors.black87,
                               fontSize: 14,
@@ -323,40 +328,81 @@ class EventDetailScreen extends StatelessWidget {
                     ),
       
                     // Guide Section
-                    Container(
-                    margin: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 16.0),
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: Colors.grey.shade300, 
-                        width: 1.5, 
-                      ),
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
+                    GestureDetector(
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                          ),
+                          builder: (context) {
+                            return const GuideWidget(
+                              images: [
+                                'assets/images/toco.png',
+                                'assets/images/fashion.png',
+                                'assets/images/trasuadodo.png',
+                              ],
+                              title: 'Hướng dẫn chơi game',
+                            );
+                          },
+                        );
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                        padding: const EdgeInsets.all(16.0),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: Colors.grey.shade300, 
+                            width: 1.5, 
+                          ),
+                        ),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(Icons.help_outline, color: Colors.grey),
-                            SizedBox(width: 8),
-                            Text(
-                              'Hướng dẫn chơi game',
-                              style: TextStyle(fontSize: 16),
+                            Row(
+                              children: [
+                                Icon(Icons.help_outline, color: Colors.grey),
+                                SizedBox(width: 8),
+                                Text(
+                                  'Hướng dẫn chơi game',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ],
                             ),
+                            Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 16),
                           ],
                         ),
-                        Icon(Icons.arrow_forward_ios,
-                            color: Colors.grey, size: 16),
-                      ],
+                      ),
                     ),
-                  ),
 
-                  //
-
-
+                  EventSection(
+                  time: "Sự kiện cùng hãng",
+                  items: eventProvider.getEventsByStore(event['store'] ?? ''),
+                  
+                  onItemTap: (event) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EventDetailScreen(event: event, eventType: "Sự kiện cùng hãng",),
+                      ),
+                    );
+                  },
+                  onViewAll: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EventViewallScreen(
+                        events: eventProvider.getEventsByStore(event['store'] ?? ''),
+                        eventType: "Sự kiện cùng hãng",
+                      ),
+                    ),
+                  );
+                },
+                ),
+                  
 
                   ],
                 ),

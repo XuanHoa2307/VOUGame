@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:voumarketinggame/pages/event_detail_page.dart';
+import 'package:voumarketinggame/pages/event_viewall_page.dart';
 import 'package:voumarketinggame/pages/wishlist_page.dart';
 import 'package:voumarketinggame/providers/bottom_navigation_provider.dart';
-
 import 'package:voumarketinggame/providers/event_provider.dart';
 import 'package:voumarketinggame/widgets/appbar_widget.dart';
 import 'package:voumarketinggame/widgets/bottom_navigation_widget.dart';
@@ -21,7 +21,6 @@ class _ContentDashboard extends State<ContentDashboard> {
   
   String typeEvent1 = 'Sự kiện đang diễn ra';
   String typeEvent2 = 'Sự kiện sắp diễn ra';
-  String typeEvent3 = 'Sự kiện nổi bật';
   String typeEvent4 = 'Sự kiện đã kết thúc';
 
   @override
@@ -40,9 +39,17 @@ class _ContentDashboard extends State<ContentDashboard> {
               EventSection(
                 
                 time: typeEvent1,
-                items: eventProvider.ongoingEvents,
+                items: eventProvider.getOngoingEvents(),
                 onViewAll: () {
-               
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EventViewallScreen(
+                        events: eventProvider.getOngoingEvents(),
+                        eventType: typeEvent2,
+                      ),
+                    ),
+                  );
                 },
                 onItemTap: (event) {
                   Navigator.push(
@@ -56,9 +63,17 @@ class _ContentDashboard extends State<ContentDashboard> {
               
               EventSection(
                 time: typeEvent2,
-                items: eventProvider.upcomingEvents,
+                items: eventProvider.getUpcomingEvents(),
                 onViewAll: () {
-                  
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EventViewallScreen(
+                        events: eventProvider.getUpcomingEvents(),
+                        eventType: typeEvent2,
+                      ),
+                    ),
+                  );
                 },
                 onItemTap: (event) {
                   Navigator.push(
@@ -72,9 +87,17 @@ class _ContentDashboard extends State<ContentDashboard> {
               
               EventSection(
                 time: typeEvent4,
-                items: eventProvider.endEvent,
+                items: eventProvider.getEndedEvents(),
                 onViewAll: () {
-                 
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EventViewallScreen(
+                        events: eventProvider.getEndedEvents(),
+                        eventType: typeEvent2,
+                      ),
+                    ),
+                  );
                 },
                 onItemTap: (event) {
                   Navigator.push(

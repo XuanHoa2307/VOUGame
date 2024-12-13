@@ -13,11 +13,11 @@ class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
   late Timer _timer;
 
   final List<String> _originalImages = [
-    'assets/images/bg1.png',
-    'assets/images/bg2.png',
-    'assets/images/bg3.png',
-    'assets/images/bg4.png',
-    'assets/images/bg5.png',
+    'assets/images/fashion.png',
+    'assets/images/katinat.png',
+    'assets/images/trasuadodo.png',
+    'assets/images/toco.png',
+    'assets/images/highlands.png',
   ];
 
   List<String> get _carouselImages {

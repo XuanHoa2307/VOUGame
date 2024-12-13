@@ -67,7 +67,7 @@ class HorizontalList extends StatelessWidget {
                     child: Row(
                       children: [
                         CircleAvatar(
-                          backgroundImage: AssetImage(item['avatar'] ?? 'assets/images/bg1.png'),
+                          backgroundImage: AssetImage(item['avatar'] ?? 'assets/images/bg6.png'),
                           radius: 16,
                         ),
                         const SizedBox(width: 8),
