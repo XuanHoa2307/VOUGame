@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class EventDetailScreen extends StatelessWidget {
   final Map<String, String> event;
   final String eventType;
@@ -13,6 +12,8 @@ class EventDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    //final eventProvider = Provider.of<EventProvider>(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey.shade100,
@@ -165,7 +166,98 @@ class EventDetailScreen extends StatelessWidget {
                       ),
                     ),
       
-                    // Terms and Conditions
+                    Container(
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 0.0, horizontal: 16.0),
+                    padding: const EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.grey.shade300, 
+                        width: 1.5, 
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(Icons.timeline_outlined, color: Colors.black),
+                            const SizedBox(width: 8),
+                            const Text(
+                            'Thời gian:  ',
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                            Text(
+                            event['startDate'] ?? '',
+                            style: const TextStyle(
+                              color: Colors.black87,
+                              fontSize: 14,
+                            ),
+                          ),
+                          const Text(
+                            '  -  ',
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 14,
+                            ),
+                          ),
+                          Text(
+                            event['endDate'] ?? '',
+                            style: const TextStyle(
+                              color: Colors.black87,
+                              fontSize: 14,
+                            ),
+                          ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Row(
+                          children: [
+                            const Icon(Icons.card_giftcard, color: Colors.black),
+                            const SizedBox(width: 8),
+                            const Text(
+                            'Voucher còn lại: ',
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                            Text(
+                            event['voucherUsed'] ?? '',
+                            style: const TextStyle(
+                              color: Colors.black87,
+                              fontSize: 14,
+                            ),
+                          ),
+                          const Text(
+                            ' / ',
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            event['voucherCount'] ?? '',
+                            style: const TextStyle(
+                              color: Colors.black87,
+                              fontSize: 14,
+                            ),
+                          ),
+                          
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+
                     Container(
                       margin: const EdgeInsets.symmetric(
                           vertical: 8.0, horizontal: 16.0),
@@ -186,7 +278,7 @@ class EventDetailScreen extends StatelessWidget {
                           const Text(
                             'Nội dung thể lệ:',
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 17,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -206,7 +298,7 @@ class EventDetailScreen extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                           const Text(
-                            '• Thời gian diễn ra đến hết ngày 17/01/2025.',
+                            '• Số lượng voucher có hạn.',
                             style: TextStyle(fontSize: 16),
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
@@ -280,35 +372,39 @@ class EventDetailScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ElevatedButton.icon(
-              onPressed: () {
-               
-              },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 12.0),
-                backgroundColor: Colors.white, 
-                shadowColor: Colors.blue.withOpacity(0.5), 
-                elevation: 5,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10), 
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Đã thêm vào danh sách yêu thích!'),
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 12.0),
+                  backgroundColor: Colors.white,
+                  shadowColor: Colors.blue.withOpacity(0.5),
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  side: const BorderSide(
+                    color: Colors.black38,
+                    width: 1,
+                  ),
                 ),
-                side: const BorderSide(
-                color: Colors.black38, 
-                width: 1, 
-                ),
-              ),
-              icon: const Icon(
-                Icons.favorite_border, 
-                color: Colors.black, 
-                size: 20, 
-              ),
-              label: const Text(
-                'Save',
-                style: TextStyle(
-                  fontSize: 16,
+                icon: const Icon(
+                  Icons.favorite_border,
                   color: Colors.black,
+                  size: 20,
+                ),
+                label: const Text(
+                  'Save',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
                 ),
               ),
-            ),
 
             
             const SizedBox(width: 8),

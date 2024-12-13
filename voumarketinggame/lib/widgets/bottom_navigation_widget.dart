@@ -31,22 +31,28 @@ class BottomNavBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           _buildNavItem(
-            icon: Icons.home,
-            label: 'Trang chủ',
+            icon: Icons.home_sharp,
+            label: 'Dashboard',
             isSelected: currentIndex == 0,
             onTap: () => onTap(0),
           ),
           _buildNavItem(
-            icon: Icons.notifications,
-            label: 'Thông báo',
+            icon: Icons.card_giftcard_outlined,
+            label: 'Wishlist',
             isSelected: currentIndex == 1,
             onTap: () => onTap(1),
           ),
           _buildNavItem(
-            icon: Icons.menu,
-            label: 'Menu',
+            icon: Icons.notifications_active_outlined,
+            label: 'Notification',
             isSelected: currentIndex == 2,
             onTap: () => onTap(2),
+          ),
+          _buildNavItem(
+            icon: Icons.menu,
+            label: 'Menu',
+            isSelected: currentIndex == 3,
+            onTap: () => onTap(3),
           ),
         ],
       ),
@@ -76,7 +82,7 @@ class BottomNavBar extends StatelessWidget {
           Icon(
             icon,
             size: 28,
-            color: isSelected ? Colors.pinkAccent : Colors.grey.shade700, 
+            color: isSelected ? Colors.pinkAccent : Colors.black87, 
           ),
           const SizedBox(height: 4),
           Text(

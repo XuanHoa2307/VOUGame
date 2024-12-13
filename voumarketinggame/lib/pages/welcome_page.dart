@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:voumarketinggame/pages/signin_page.dart';
 import 'package:voumarketinggame/pages/signup_page.dart';
-import 'package:voumarketinggame/theme/theme.dart';
 import 'package:voumarketinggame/widgets/scaffold_widget.dart';
 import 'package:voumarketinggame/widgets/welcome_widget.dart';
 
@@ -33,12 +32,12 @@ class WelcomeScreen extends StatelessWidget {
                   child: Center(
                     child: RichText(
                       textAlign: TextAlign.center,
-                      text: TextSpan(
+                      text: const TextSpan(
                         children: [
                            TextSpan(
                               text: 'Welcome to VOU',
                               style: TextStyle(
-                                color: lightColorScheme.onPrimary,
+                                color: Colors.black,
                                 fontSize: 40.0,
                                 fontWeight: FontWeight.w900,
                               )),
@@ -46,11 +45,11 @@ class WelcomeScreen extends StatelessWidget {
                           TextSpan(
                               text: '\nGaming for Rewards\n',
                               style: TextStyle(
-                                color: lightColorScheme.onPrimary,
+                                color: Colors.black,
                                 fontSize: 33.0,
                                 fontWeight: FontWeight.w500,
                               )),
-                          const TextSpan(
+                          TextSpan(
                               text:
                                   '\n\nPlease, sign up or sign in to start!\n',
                               style: TextStyle(
@@ -63,7 +62,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                 )),
-                Flexible(
+                const Flexible(
                   flex: 1,
                   child: Align(
                     alignment: Alignment.bottomRight,
@@ -72,17 +71,17 @@ class WelcomeScreen extends StatelessWidget {
                         Expanded(
                           child: WelcomeButton(
                             buttonText: 'Sign in',
-                            onTap: const SignInScreen(),
+                            onTap: SignInScreen(),
                             color: Colors.transparent,
-                            textColor: lightColorScheme.onPrimary,
+                            textColor: Colors.white
                           ),
                         ),
                         Expanded(
                           child: WelcomeButton(
                             buttonText: 'Sign up',
-                            onTap: const SignUpScreen(),
-                            color: lightColorScheme.primary,
-                            textColor: Colors.white,
+                            onTap: SignUpScreen(),
+                            color: Colors.white54,
+                            textColor: Colors.black87,
                           ),
                         ),
                       ],

@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:voumarketinggame/pages/welcome_page.dart';
+import 'package:voumarketinggame/providers/bottom_navigation_provider.dart';
+import 'package:voumarketinggame/providers/event_provider.dart';
 import 'package:voumarketinggame/theme/theme.dart';
 
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => EventProvider()),
+        ChangeNotifierProvider(create: (_) => BottomNavigationProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

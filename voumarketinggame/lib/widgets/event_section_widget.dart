@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:voumarketinggame/widgets/listview_widget.dart';
 
@@ -46,7 +44,6 @@ class EventSection extends StatelessWidget {
           ),
         ),
         HorizontalList(
-
           time: time,
           items: items,
           onItemTap: onItemTap,
