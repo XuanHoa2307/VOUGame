@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:voumarketinggame/pages/welcome_page.dart';
+import 'package:voumarketinggame/pages/slash_page.dart';
 import 'package:voumarketinggame/providers/bottom_navigation_provider.dart';
 import 'package:voumarketinggame/providers/event_provider.dart';
+import 'package:voumarketinggame/providers/voucher_provider.dart';
 import 'package:voumarketinggame/theme/theme.dart';
 
 
@@ -12,6 +13,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => EventProvider()),
         ChangeNotifierProvider(create: (_) => BottomNavigationProvider()),
+        ChangeNotifierProvider(create: (_) => VoucherProvider()),
       ],
       child: const MyApp(),
     ),
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: lightMode,
-      home: const WelcomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }
